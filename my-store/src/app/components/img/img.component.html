@@ -1,0 +1,4 @@
+<img [src]="img" width="200px" height="200px" *ngIf="img ; else ElseBlock">
+<ng-template #ElseBlock>
+    <p>No se pudo encontrar la imagen</p>
+</ng-template>
