@@ -9,7 +9,7 @@ import { Product } from './models/product.model';
 })
 export class AppComponent {
   imgParent = 'https://picsum.photos/200';
-
+  showImg = true;
   products : Product[] = [
     {
       id: '1',
@@ -53,5 +53,9 @@ export class AppComponent {
   onLoad(img : string) {
     console.log('log del padre', img);
     
+  }
+
+  toggleImg(){
+    this.showImg = !this.showImg;
   }
 }
