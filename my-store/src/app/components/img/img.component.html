@@ -1,5 +1,5 @@
-<img [src]="img" width="200px" (load)="imgLoad()" (error)="imgError()"height="200px" *ngIf="img ; else ElseBlock">
-<h3>{{min}} : {{sec}}</h3>
+<img [src]="img"  (load)="imgLoad()" (error)="imgError()"height="200px" *ngIf="img ; else ElseBlock">
+<!-- <h3>{{min}} : {{sec}}</h3> -->
 <ng-template #ElseBlock>
     <p>No se pudo encontrar la imagen</p>
     <img [src]="imgDefault" height="200px">

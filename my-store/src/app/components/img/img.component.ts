@@ -19,9 +19,9 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   @Output() loaded = new EventEmitter<string>();
 
-  sec = 0;
-  min = 0;
-  counterFn : number | undefined;
+  // sec = 0;
+  // min = 0;
+  // counterFn : number | undefined;
   imgDefault : string = 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg';
   constructor() {
     //before render
@@ -43,14 +43,14 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
     //YES Async - fetch
     //Run one time
     console.log('ngOnInit / Img value =>' , this.img);
-   this.counterFn = window.setInterval(()=>{
-      this.sec += 1;
-      console.log(this.sec);
-      if(this.sec === 60){
-        this.sec = 0;
-        this.min += 1;
-      }
-    }, 1000)
+  //  this.counterFn = window.setInterval(()=>{
+  //     this.sec += 1;
+  //     console.log(this.sec);
+  //     if(this.sec === 60){
+  //       this.sec = 0;
+  //       this.min += 1;
+  //     }
+  //   }, 1000)
   }
 
   ngAfterViewInit(): void {
@@ -62,7 +62,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   ngOnDestroy(): void {
     //Delete
      console.log('ngOnDestroy');
-     window.clearInterval(this.counterFn);
+    //  window.clearInterval(this.counterFn);
   }
   imgError(){
     this.img = this.imgDefault;
