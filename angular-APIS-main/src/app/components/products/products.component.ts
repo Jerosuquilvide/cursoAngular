@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { switchMap } from 'rxjs/operators';
+import { zip } from 'rxjs';
 import { Product, CreateProductDTO, UpdateProductDTO } from '../../models/product.model';
 
 import { StoreService } from '../../services/store.service';
@@ -108,5 +109,21 @@ export class ProductsComponent implements OnInit {
       this.products = this.products.concat(data);
       this.offset += this.limit;
     });
+  }
+
+  readAndUpdate(id: string){
+    this.productsService.getProduct(id)
+    .pipe(
+      switchMap((product) => this.productsService.update(product.id, {title : 'change'}))
+    )
+    .subscribe(data =>{
+      console.log(data);
+    });
+    this.productsService.fetchReadAndUpdate(id,{title : 'new'})
+    .subscribe( response => {
+        const read = response[0]; 
+        const update = response[1]; 
+    }
+    )
   }
 }

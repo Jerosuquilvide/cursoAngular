@@ -1,3 +1,4 @@
+import { zip } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry, map } from 'rxjs/operators';
@@ -67,5 +68,13 @@ export class ProductsService {
 
   delete(id : string){
     return this.http.delete<boolean>(`${this.apiUrl}/${id}`)
+  }
+
+  fetchReadAndUpdate(id:string ,  dto:UpdateProductDTO){
+    return  zip(
+      this.getProduct(id),
+      this.update(id, dto)
+    );
+    
   }
 }
