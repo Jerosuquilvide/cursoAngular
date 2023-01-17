@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   total = 0;
   products: Product[] = [];
   showProductDetail = false;
+  statusDetail: 'loading' | 'succes' | 'error' | 'init' = 'init';
   productChosen : Product ={
     id : '',
     price : 0,
@@ -48,10 +49,15 @@ export class ProductsComponent implements OnInit {
   }
 
   viewDetails(id: string){
+      this.statusDetail = 'loading';
+      this.toggleButtonDetail();
      this.productsService.getProduct(id)
      .subscribe(data =>{
-      this.toggleButtonDetail();
       this.productChosen = data;
+      this.statusDetail = 'succes';
+     }, response => {
+      console.log(response.error.message);
+      this.statusDetail = 'error';
      })
   }
 
