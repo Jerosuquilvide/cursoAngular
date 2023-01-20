@@ -13,7 +13,7 @@ import { UsersService } from './services/users.service';
 export class AppComponent {
   imgParent = '';
   showImg = true;
-
+  token = "";
   constructor(
     private authService : AuthService,
     private userService : UsersService,
@@ -43,7 +43,7 @@ export class AppComponent {
   login(){
     this.authService.login('jero@email.com','123123')
     .subscribe(rta => {
-      console.log(rta);
+      this.token = rta.access_token;
     })
   }
 }
