@@ -3,6 +3,11 @@
 <!-- <button (click)="login()">Login</button>
 <button (click)="getProfile()">Get profile</button> -->
 <button (click)="downloadPdf()">Download</button>
+
+<p>
+    <input type="file" (change)="uploadFile($event)">
+    <img *ngIf="ImgSrc" [src]="ImgSrc"  alt="200px">
+</p>
 <app-products></app-products>
 <!-- <p><input type="text" [(ngModel)]="imgParent" /></p>
 <button (click)="toggleImg()">Toggle Img</button>

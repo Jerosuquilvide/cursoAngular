@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { FilesService } from './services/files.service';
+import { fi } from 'date-fns/locale';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
   imgParent = '';
   showImg = true;
   token = "";
+  ImgSrc = "";
   constructor(
     private authService : AuthService,
     private userService : UsersService,
@@ -60,5 +62,16 @@ export class AppComponent {
   downloadPdf(){
     this.fileService.getFile('name.pdf','your_url.com','apllication/pdf')
     .subscribe()
+  }
+
+  uploadFile(event: Event){
+    const element = event.target as HTMLInputElement;
+    const file = element.files?.item(0)
+    if(file){
+      this.fileService.uploadFile(file)
+      .subscribe(rta =>{
+        this.ImgSrc = rta.location;
+      })
+    }
   }
 }
