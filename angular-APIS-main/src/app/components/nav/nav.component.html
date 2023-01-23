@@ -36,7 +36,7 @@
       </ul>
     </nav>
     <div class="info">
-      <button *ngIf="!token ; else Elseblock" (click)="loginAndGetProfile()">Login</button>
+      <button *ngIf="!profile ; else Elseblock" (click)="loginAndGetProfile()">Login</button>
         <ng-template #Elseblock>{{ profile?.email }}</ng-template>
       <div class="cart">
         <a href="">
