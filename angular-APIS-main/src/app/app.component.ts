@@ -44,6 +44,14 @@ export class AppComponent {
     this.authService.login('jero@email.com','123123')
     .subscribe(rta => {
       this.token = rta.access_token;
+      console.log(rta);
+    })
+  }
+
+  getProfile(){
+    this.authService.profile(this.token)
+    .subscribe(profile => {
+      console.log(profile);
     })
   }
 }
