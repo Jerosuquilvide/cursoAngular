@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
+import { FilesService } from './services/files.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
   constructor(
     private authService : AuthService,
     private userService : UsersService,
+    private fileService : FilesService
   ){
 
   }
@@ -53,5 +55,10 @@ export class AppComponent {
     .subscribe(profile => {
       console.log(profile);
     })
+  }
+
+  downloadPdf(){
+    this.fileService.getFile('name.pdf','your_url.com','apllication/pdf')
+    .subscribe()
   }
 }
